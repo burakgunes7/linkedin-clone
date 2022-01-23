@@ -8,7 +8,7 @@ import "./Feed.css";
 import InputOption from "./InputOption";
 import Post from "./Post";
 import { db } from "./firebase";
-// import firebase from "firebase/compat/app";
+import firebase from "firebase/compat/app";
 
 function Feed() {
   const [input, setInput] = useState("");
@@ -32,7 +32,7 @@ function Feed() {
       description: "this is a test",
       message: input,
       photoUrl: "",
-      timestamp: "",
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
     setInput("");
   };
